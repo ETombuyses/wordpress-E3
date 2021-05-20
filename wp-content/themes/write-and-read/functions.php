@@ -166,23 +166,22 @@ if(! function_exists('write_and_read_customizer_css_final_output' ) ):
 add_action( 'wp_head', 'write_and_read_customizer_css_final_output' );
 endif;
 
-
-function cptui_register_my_cpts_game() {
+function cptui_register_my_cpts_jeu() {
 
 	/**
 	 * Post Type: Jeux.
 	 */
 
 	$labels = [
-		"name" => __( "Jeux", "twentytwentyone" ),
-		"singular_name" => __( "jeu", "twentytwentyone" ),
-		"menu_name" => __( "Jeux", "twentytwentyone" ),
+		"name" => __( "Jeux", "write-and-read" ),
+		"singular_name" => __( "Jeu", "write-and-read" ),
+		"menu_name" => __( "Jeux", "write-and-read" ),
 	];
 
 	$args = [
-		"label" => __( "Jeux", "twentytwentyone" ),
+		"label" => __( "Jeux", "write-and-read" ),
 		"labels" => $labels,
-		"description" => "Informations détaillées d\'un jeu vidéo",
+		"description" => "",
 		"public" => true,
 		"publicly_queryable" => true,
 		"show_ui" => true,
@@ -197,13 +196,14 @@ function cptui_register_my_cpts_game() {
 		"capability_type" => "post",
 		"map_meta_cap" => true,
 		"hierarchical" => false,
-		"rewrite" => [ "slug" => "game", "with_front" => true ],
+		"rewrite" => [ "slug" => "jeu", "with_front" => true ],
 		"query_var" => true,
 		"supports" => [ "title", "thumbnail", "custom-fields" ],
 		"show_in_graphql" => false,
 	];
 
-	register_post_type( "game", $args );
+	register_post_type( "jeu", $args );
 }
 
-add_action( 'init', 'cptui_register_my_cpts_game' );
+add_action( 'init', 'cptui_register_my_cpts_jeu' );
+
