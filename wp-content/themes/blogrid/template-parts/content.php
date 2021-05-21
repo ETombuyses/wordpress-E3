@@ -79,7 +79,8 @@
 				'after'  => '</div>',
 				) );
 				?>
-
+			
+			<p><?php get_field('description') ?> </p>
 			</div><!-- .entry-content -->
 
 		</div>
