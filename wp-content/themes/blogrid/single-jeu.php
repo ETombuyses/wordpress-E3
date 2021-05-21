@@ -6,7 +6,7 @@
   }
 
   .cover {
-    width: 1180px;
+    width: 100%;
     position: relative;
     top: -40px;
   }
@@ -19,23 +19,15 @@
     transform: translateX(-50%);
   }
 
-  .jacket a {
-    display: block;
-    max-width: 221px;
-    margin: auto;
-    position: relative;
-    top: -40px;
-  }
-
   .blacknut {
     font-family: 'Lato', 'helvetica neue', helvetica, arial;
     color: white;
-    font-size: 30px;
+    font-size: 24px;
     font-weight: bold;
     background-color: #E73D2F;
     text-decoration: none;
     border-radius: 56px;
-    padding: 20px 30px;
+    padding: 10px 20px;
   }
 
   .title {
@@ -105,7 +97,6 @@ while( have_posts()) {
     if( get_field('jacket') ): ?>
       <div class="jacket">
         <img src="<?php the_field('jacket'); ?>" />
-        <a class="blacknut" href="https://www.blacknut.com">Jouer au jeu</a>
       </div>
     <?php endif; ?>
 
