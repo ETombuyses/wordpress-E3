@@ -1,3 +1,93 @@
+<style>
+  .gameWrapper {
+    width: 100%;
+    margin-top: -40px;
+    position: relative;
+  }
+
+  .cover {
+    width: 1180px;
+    position: relative;
+    top: -40px;
+  }
+
+  .jacket {
+    width: 33%;
+    position: absolute;
+    left: 50%;
+    top: 40px;
+    transform: translateX(-50%);
+  }
+
+  .jacket a {
+    display: block;
+    max-width: 221px;
+    margin: auto;
+    position: relative;
+    top: -40px;
+  }
+
+  .blacknut {
+    font-family: 'Lato', 'helvetica neue', helvetica, arial;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #E73D2F;
+    text-decoration: none;
+    border-radius: 56px;
+    padding: 20px 30px;
+  }
+
+  .title {
+    font-family: 'Lato', 'helvetica neue', helvetica, arial;
+    font-size: 47px;
+    font-weight: bold;
+    margin-bottom: 0;
+    line-height: normal;
+  }
+
+  .franchise {
+    font-family: 'Lato', 'helvetica neue', helvetica, arial;
+    font-size: 34px;
+    font-weight: 100;
+    margin-bottom: 0;
+    line-height: normal
+  }
+
+  .description {
+    font-family: 'Lato', 'helvetica neue', helvetica, arial;
+    font-size: 16px;
+    margin: 50px 0 70px;
+    font-weight: normal;
+    line-height: normal
+  }
+
+  .titleGameData {
+    font-family: 'Lato', 'helvetica neue', helvetica, arial;
+    margin-top: 50px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .gameDataContainer {
+    column-count: 2;
+    margin-bottom: 100px;
+  }
+
+  .gameDataContainer p, .gameDataContainer span {
+    font-family: 'Lato', 'helvetica neue', helvetica, arial;
+    color: #E73D2F;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .gameDataContainer span {
+    color: black;
+    font-weight: normal;
+    margin-left: 10px;
+  }
+</style>
+
 <?php
 
 get_header();
@@ -5,39 +95,46 @@ get_header();
 while( have_posts()) {
   the_post();
 
-  if( get_field('background_image') ): ?>
-    <img src="<?php the_field('background_image'); ?>" />
-  <?php endif;
-
-  if( get_field('jacket') ): ?>
-    <img src="<?php the_field('jacket'); ?>" />
-  <?php endif;
-
-  the_field('titre_du_jeu');
-
-  $franchise = get_field('franchise');
-  if( $franchise ) {
-    the_field('franchise');
-  }
-  the_field('description');
-  echo '</br>';
-  echo '<a href="https://www.blacknut.com">Jouer au jeu</a>';
-  echo '</br>';
 ?>
 
+  <div class="gameWrapper">
+    <?php if( get_field('background_image') ): ?>
+      <img class="cover" src="<?php the_field('background_image'); ?>" />
+    <?php endif;
 
+    if( get_field('jacket') ): ?>
+      <div class="jacket">
+        <img src="<?php the_field('jacket'); ?>" />
+        <a class="blacknut" href="https://www.blacknut.com">Jouer au jeu</a>
+      </div>
+    <?php endif; ?>
 
-  <h2>Fiche technique</h2>
+    <p class="title"><?php the_field('titre_du_jeu'); ?></p>
 
-  <p>Date de sortie: <?php the_field('date_de_sortie'); ?></p>
-  <p>Editeur: <?php the_field('editeur'); ?></p>
-  <p>Developpeur: <?php the_field('developpeur'); ?></p>
-  <p>Mode de jeu: <?php the_field('mode_de_jeu'); ?></p>
-  <p>Limite d'âge: <?php the_field('pegi'); ?></p>
-  <p>Theme: <?php the_field('theme'); ?></p>
-  <p>Genre: <?php the_field('genre'); ?></p>
-  <p>Plateformes: <?php the_field('plateforme'); ?></p>
+    <?php
+    $franchise = get_field('franchise');
+    if( $franchise ) { 
+      ?>
+      <p class="franchise"><?php the_field('franchise');?></p> 
+      <?php
+    }
+    ?>
+    <p class="description"><?php the_field('description');?></p> 
+    <a class="blacknut" href="https://www.blacknut.com">Jouer au jeu</a>
 
+    <h2 class="titleGameData">Fiche technique :</h2>
+
+    <div class="gameDataContainer">
+      <p>Date de sortie: <span><?php the_field('date_de_sortie'); ?></span></p>
+      <p>Editeur: <span><?php the_field('editeur'); ?></span></p>
+      <p>Developpeur: <span><?php the_field('developpeur'); ?></span></p>
+      <p>Mode de jeu: <span><?php the_field('mode_de_jeu'); ?></span></p>
+      <p>Limite d'âge: <span><?php the_field('pegi'); ?></span></p>
+      <p>Theme: <span><?php the_field('theme'); ?></span></p>
+      <p>Genre: <span><?php the_field('genre'); ?></span></p>
+      <p>Plateformes: <span><?php the_field('plateforme'); ?></span></p>
+    </div>
+  </div>
   <?php
 }
 get_footer();
