@@ -2313,11 +2313,7 @@ article.fbox {
 article.blogposts-list {
   padding: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-<<<<<<< HEAD
   border-radius: 33px;
-=======
-  border-radius: 3px;
->>>>>>> 311bb5bacb56049adc1137f6339a2ed17f75824e
   margin-bottom: 55px;
 }
 
