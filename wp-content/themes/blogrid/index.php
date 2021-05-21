@@ -12,42 +12,59 @@
  * @package blogrid
  */
 
-get_header(); ?>
+get_header(); 
+?>
 
 <div id="primary" class="featured-content content-area fullwidth-area-blog">
+
+<h2 class="entry-title">Conférences</h2>
 	<main id="main" class="site-main all-blog-articles">
-		<?php
-		if ( have_posts() ) :
+		<?php 
 
-			if ( is_home() && ! is_front_page() ) : ?>
-		
-		<header>
-			<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-		</header>
+		$args = array(
+				'post_type'=> 'conference',
+				'order'    => 'ASC'
+		);              
 
-		<?php
+		$the_query = new WP_Query( $args );
+		if($the_query->have_posts() ) : 
+				while ( $the_query->have_posts() ) : 
+					$the_query->the_post(); 
+					get_template_part( 'template-parts/content', get_post_format() );
+				endwhile; 
+				wp_reset_postdata(); 
+		else: 
 		endif;
 
-		/* Start the Loop */
-		while ( have_posts() ) : the_post();
+		?>
+	
+			</main><!-- #main -->
+		</div><!-- #primary -->
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
 
-				endwhile;
-				echo '<div class="text-center pag-wrapper">';
-				blogrid_numeric_posts_nav();
-				echo '</div>';
-				else :
 
-					get_template_part( 'template-parts/content', 'none' );
 
-				endif; ?>
+  <h2 class="entry-title">Jeux</h2>
+	<main id="main" class="site-main all-blog-articles">
+		<?php 
 
+		$args = array(
+				'post_type'=> 'jeu',
+				'order'    => 'ASC'
+		);              
+
+		$the_query = new WP_Query( $args );
+		if($the_query->have_posts() ) : 
+				while ( $the_query->have_posts() ) : 
+					$the_query->the_post(); 
+					get_template_part( 'template-parts/content', get_post_format() );
+				endwhile; 
+				wp_reset_postdata(); 
+		else: 
+		endif;
+
+		?>
+	
 			</main><!-- #main -->
 		</div><!-- #primary -->
 

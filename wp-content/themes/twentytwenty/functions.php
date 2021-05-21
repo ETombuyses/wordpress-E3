@@ -870,7 +870,7 @@ function cptui_register_my_cpts_jeu() {
 		"hierarchical" => false,
 		"rewrite" => [ "slug" => "jeu", "with_front" => true ],
 		"query_var" => true,
-		"supports" => [ "title", "thumbnail", "custom-fields" ],
+		"supports" => [ "title", "thumbnail", "custom-fields", "excerpt" ],
 		"show_in_graphql" => false,
 	];
 

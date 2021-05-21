@@ -603,3 +603,84 @@ function blogrid_register_required_plugins() {
 
 	tgmpa( $plugins, $config );
 }
+
+function cptui_register_my_cpts_jeu() {
+
+	/**
+	 * Post Type: Jeux.
+	 */
+
+	$labels = [
+		"name" => __( "Jeux", "write-and-read" ),
+		"singular_name" => __( "Jeu", "write-and-read" ),
+		"menu_name" => __( "Jeux", "write-and-read" ),
+	];
+
+	$args = [
+		"label" => __( "Jeux", "write-and-read" ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"show_in_rest" => true,
+		"rest_base" => "",
+		"rest_controller_class" => "WP_REST_Posts_Controller",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"delete_with_user" => false,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => [ "slug" => "jeu", "with_front" => true ],
+		"query_var" => true,
+		"supports" => [ "title", "thumbnail", "custom-fields", "excerpt" ],
+		"show_in_graphql" => false,
+	];
+
+	register_post_type( "jeu", $args );
+}
+
+add_action( 'init', 'cptui_register_my_cpts_jeu' );
+
+function cptui_register_my_cpts_conference() {
+
+	/**
+	 * Post Type: conférences.
+	 */
+
+	$labels = [
+		"name" => __( "conférences", "blogrid" ),
+		"singular_name" => __( "conférence", "blogrid" ),
+	];
+
+	$args = [
+		"label" => __( "conférences", "blogrid" ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"show_in_rest" => true,
+		"rest_base" => "",
+		"rest_controller_class" => "WP_REST_Posts_Controller",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"delete_with_user" => false,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => [ "slug" => "conference", "with_front" => true ],
+		"query_var" => true,
+		"supports" => [ "title", "thumbnail", "custom-fields", "excerpt" ],
+		"show_in_graphql" => false,
+	];
+
+	register_post_type( "conference", $args );
+}
+
+add_action( 'init', 'cptui_register_my_cpts_conference' );

@@ -15,9 +15,24 @@
 		<a href="<?php the_permalink() ?>" class="featured-thumbnail" rel="bookmark">
 			<?php esc_html(the_post_thumbnail('medium_large')); ?> 
 		</a>
-	<?php else : ?>
+	<!-- code to display CPTUI cutom types - game jacket -->
+	<?php elseif ( get_field('jacket') ) : ?>
+	<div class="featured-img-box">
+		<a href="<?php the_permalink() ?>" class="featured-thumbnail" rel="bookmark">
+		<img src="<?php the_field('jacket'); ?>" />
+		</a>
+	<!-- code to display CPTUI cutom types - conference image -->
+	<?php elseif ( get_field('image') ) : ?>
+	<div class="featured-img-box">
+		<a href="<?php the_permalink() ?>" class="featured-thumbnail" rel="bookmark">
+		<img src="<?php the_field('image'); ?>" />
+		</a>
+	<?php else:?>
 	<div class="no-featured-img-box">
 	<?php endif; ?>
+
+
+
 	<div class="content-wrapper">
 		<header class="entry-header">
 			<?php
@@ -38,6 +53,7 @@
 					</div>
 				</div>
 			</div><!-- .entry-meta -->
+
 			<?php
 			endif; ?>
 		</header><!-- .entry-header -->
