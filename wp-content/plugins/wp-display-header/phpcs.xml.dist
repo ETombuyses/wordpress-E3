@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<ruleset name="WP Display Header">
+	<file>.</file>
+
+	<!-- Exclude JS/CSS files. -->
+	<exclude-pattern>*.[s]?css</exclude-pattern>
+
+	<!-- Show sniff codes -->
+	<arg value="s"/>
+
+	<rule ref="WordPress">
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+		<exclude name="WordPress.VIP.RestrictedFunctions.user_meta_get_user_meta" />
+		<exclude name="WordPress.VIP.RestrictedFunctions.user_meta_update_user_meta" />
+		<exclude name="WordPress.VIP.RestrictedFunctions.user_meta_delete_user_meta" />
+		<exclude name="WordPress.VIP.DirectDatabaseQuery.DirectQuery" />
+	</rule>
+	<rule ref="WordPress-Docs" />
+
+	<rule ref="WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid">
+		<exclude-pattern>wp-display-header.php</exclude-pattern>
+	</rule>
+
+	<rule ref="WordPress.VIP.SuperGlobalInputUsage.AccessDetected">
+		<exclude-pattern>wp-display-header.php</exclude-pattern>
+	</rule>
+	<rule ref="WordPress.VIP.ValidatedSanitizedInput.MissingUnslash">
+		<exclude-pattern>wp-display-header.php</exclude-pattern>
+	</rule>
+	<rule ref="WordPress.VIP.ValidatedSanitizedInput.InputNotSanitized">
+		<exclude-pattern>wp-display-header.php</exclude-pattern>
+	</rule>
+	<rule ref="WordPress.VIP.ValidatedSanitizedInput.InputNotValidated">
+		<exclude-pattern>wp-display-header.php</exclude-pattern>
+	</rule>
+</ruleset>
