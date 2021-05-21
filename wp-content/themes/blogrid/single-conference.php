@@ -1,3 +1,46 @@
+<style>
+    .video {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+    }
+
+    .video iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    .title {
+        font-family: 'Lato', 'helvetica neue', helvetica, arial;
+        font-size: 47px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        line-height: normal;
+    }
+
+    .conferenceDataContainer {
+        column-count: 2;
+        margin-bottom: 100px;
+    }
+
+    .conferenceDataContainer p, .conferenceDataContainer span {
+        font-family: 'Lato', 'helvetica neue', helvetica, arial;
+        color: #E73D2F;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .conferenceDataContainer span {
+        color: black;
+        font-weight: normal;
+        margin-left: 10px;
+    }
+</style>
+
 <?php
 
 get_header();
@@ -6,14 +49,14 @@ while( have_posts()) {
     the_post();
 
     if( get_field('image') ): ?>
-        <img src="<?php the_field('image'); ?>" />
-    <?php endif;
+        <!-- <img src="<?php the_field('image'); ?>" /> -->
+    <?php endif; ?>
 
-    the_field('stream');
+    <div class="video"> <?php the_field('stream'); ?></div>
 
-    the_field('titre');
+    <h2 class="title"> <?php the_field('titre'); ?></h2>
 
-
+    <?php
 // GAMES linked to the conference
     $featured_posts = get_field('jeux');
     if( $featured_posts ): ?>
@@ -36,12 +79,14 @@ while( have_posts()) {
 
 
 
-    <h2>Fiche technique</h2>
+    <h2 class="title">Fiche technique</h2>
 
-    <p>Date de la conférence: <?php the_field('date'); ?></p>
-    <p>Conférence VIP: <?php the_field('vip'); ?></p>
-    <p>Editeur: <?php the_field('editeur'); ?></p>
-    <p>Présentée par: <?php the_field('presentateurs'); ?></p>
+    <div class="conferenceDataContainer">
+        <p>Date de la conférence: <span><?php the_field('date'); ?></span></p>
+        <p>Conférence VIP: <span><?php the_field('vip'); ?></span></p>
+        <p>Editeur: <span><?php the_field('editeur'); ?></span></p>
+        <p>Présentée par: <span><?php the_field('presentateurs'); ?></span></p>
+    </div>
     <?php
 }
 get_footer();
