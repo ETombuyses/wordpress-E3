@@ -13,6 +13,7 @@
 
   .jacket {
     width: 33%;
+    max-width: 300px;
     position: absolute;
     left: 50%;
     top: 40px;
@@ -95,9 +96,7 @@ while( have_posts()) {
     <?php endif;
 
     if( get_field('jacket') ): ?>
-      <div class="jacket">
-        <img src="<?php the_field('jacket'); ?>" />
-      </div>
+      <img class="jacket" src="<?php the_field('jacket'); ?>" />
     <?php endif; ?>
 
     <p class="title"><?php the_field('titre_du_jeu'); ?></p>
